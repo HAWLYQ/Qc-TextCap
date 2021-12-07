@@ -1,0 +1,105 @@
+includes:
+- common/defaults/configs/datasets/captioning/vizwiz.yml
+# Use soft copy
+dataset_attributes:
+  m4c_textcaps:
+    image_features:
+      train:
+      - vizwiz/maskrcnn_data/obj/train_images,vizwiz/maskrcnn_data/ocr_m4c/train_images # train_val_images
+      val:
+      - vizwiz/maskrcnn_data/obj/val_images,vizwiz/maskrcnn_data/ocr_m4c/val_images
+      test:
+      - vizwiz/maskrcnn_data/obj/test_images,vizwiz/maskrcnn_data/ocr_m4c/test_images
+    imdb_files:
+      train:
+      - vizwiz/imdb/spacy_imdb_train.npy # imdb_train_val.npy
+      val:
+      - vizwiz/imdb/spacy_imdb_val_filtered_by_image_id.npy  # only one sample per image_id
+      test:
+      - vizwiz/imdb/spacy_imdb_test_filtered_by_image_id.npy  # only one sample per image_id
+    processors:
+      text_processor:
+        type: bert_tokenizer
+        params:
+          max_length: 1
+      answer_processor:
+        type: hu_m4c_caption  # m4c_caption
+        params:
+          vocab_file: vizwiz/spacy_vocab_vizwiz_threshold_5.txt # vizwiz_vocab_m4c_threshold_5.txt
+          preprocessor:
+            type: simple_word
+            params: {}
+          context_preprocessor:
+            type: simple_word
+            params: {}
+          max_length: 50 # max ocr dictionary length
+          max_copy_steps: 30 # max seq_length
+          num_answers: 1 # for each data item, there is one image and one caption
+      copy_processor:
+        type: copy
+        params:
+          max_length: 100
+      phoc_processor:
+        type: phoc
+        params:
+          max_length: 50
+model_attributes:
+  m4c_captioner:
+    lr_scale_frcn: 0.1
+    lr_scale_text_bert: 0.1
+    lr_scale_mmt: 1.0  # no scaling
+    text_bert_init_from_bert_base: true
+    text_bert:
+      num_hidden_layers: 3
+    obj:
+      mmt_in_dim: 2048
+      dropout_prob: 0.1
+    ocr:
+      mmt_in_dim: 3002  # 300 (FastText) + 604 (PHOC) + 2048 (Faster R-CNN) + 50 (all zeros; legacy)
+      dropout_prob: 0.1
+    mmt:
+      hidden_size: 768
+      num_hidden_layers: 4
+      mid_use_bbox_att: false # anwen hu 2020/10/7
+      init_use_bbox_att: false # anwen hu 2020/10/13
+      init_use_bbox_att_purevision: false # anwen hu 2020/10/19
+    classifier:
+      type: linear
+      ocr_max_num: 50
+      ocr_ptr_net:
+        hidden_size: 768
+        query_key_size: 768
+      params: {}
+    model_data_dir: ../data
+    metrics:
+    - type: textcaps_bleu4
+    losses:
+    - type: m4c_decoding_ce_with_mask # anwen hu 2020/11/15; m4c original: m4c_decoding_bce_with_mask
+    remove_unk_in_pred: true
+optimizer_attributes:
+  params:
+    eps: 1.0e-08
+    lr: 1e-4
+    weight_decay: 0
+  type: Adam
+training_parameters:
+    clip_norm_mode: all
+    clip_gradients: true
+    max_grad_l2_norm: 0.25
+    lr_scheduler: true
+    lr_steps:
+    - 10000
+    - 11000
+    lr_ratio: 0.1
+    use_warmup: true
+    warmup_factor: 0.2
+    warmup_iterations: 2000 # 1000 for 12000 iterations, 2000 for 24000 iterations
+    max_iterations: 24000 # 12000 for batch 128, 24000 for batch 128
+    batch_size: 64 # 128
+    log_interval: 200 # 100 for batch 128
+    snapshot_interval: 2000 #  1000 for batch 128 (evaluate the whole val dataset)
+    num_workers: 1
+    task_size_proportional_sampling: true
+    monitored_metric: m4c_textcaps/textcaps_bleu4
+    metric_minimize: false
+    sc_learning: false # anwen hu 2020/11/11 whether to use self-critical learning
