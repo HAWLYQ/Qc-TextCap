@@ -36,7 +36,7 @@ for sample in data:
  This project is revised based on M4C-Captioner, so please prepare environments as [pythia](https://github.com/facebookresearch/mmf/tree/project/m4c).
  
  ## checkpoints download
-Checkpoints of M4CC, GQAM w/o GE, GQAM can be download from baidu disk ().
+Checkpoints of M4CC, GQAM w/o GE, GQAM can be download from baidu disk (https://pan.baidu.com/s/1g8GzWAu0gVRlxGiphgDmsg, pwd:w4a6).
   
  
  ## train from scratch
