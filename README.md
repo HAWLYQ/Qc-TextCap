@@ -2,8 +2,12 @@
 
 By Anwen Hu, Shizhe Chen, Qin Jin
 
+Task preview:
+
+![Qc-TextCap](https://github.com/HAWLYQ/Qc-TextCap/blob/master/task_preview.pdf)
+
 # Dataset
-## Get QcTextCap Datasets
+## Get Qc-TextCap Datasets
 Download ControlTextCaps and ControlVizWiz from baidu disk (https://pan.baidu.com/s/1gw5l6eFFGO2OFfWt9ZtFAg, pwd：ykyi).
 Put corresponding imdb directories under `data/$dataset_name`.
 Raw images can be downloaded from official sites of [TextCaps](https://textvqa.org/textcaps/dataset/) and [VizWiz-Captions](https://vizwiz.org/tasks-and-datasets/image-captioning/).
