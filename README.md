@@ -7,7 +7,7 @@ Task preview:
 ![Qc-TextCap](https://github.com/HAWLYQ/Qc-TextCap/blob/master/task_preview.pdf)
 
  
- # Getting started
+ ## Requirements
  This project is revised based on [M4C-Captioner](https://github.com/facebookresearch/mmf/tree/project/m4c/projects/M4C_Captioner).
  You can create your own conda environment and then get started as follows:
  ```
@@ -24,7 +24,7 @@ pip install --upgrade setuptools==57.5.0
 When you get the message 'Finished processing dependencies for pythia==0.3', 
 the environment is ready. 
 
-### download detectron weights
+### Download detectron weights
 ```
 mkdir data
 cd data
@@ -32,14 +32,14 @@ wget http://dl.fbaipublicfiles.com/pythia/data/detectron_weights.tar.gz
 tar xf detectron_weights.tar.gz
 ```
 
-# Dataset
-## Get Qc-TextCap Datasets
+## Dataset
+### Download Qc-TextCap Datasets
 Download ControlTextCaps and ControlVizWiz from baidu disk (https://pan.baidu.com/s/1gw5l6eFFGO2OFfWt9ZtFAg, pwd：ykyi).
 Put corresponding imdb directories and vocabulary files under `data/$dataset_name`. 
 Raw images can be downloaded from official sites of [TextCaps](https://textvqa.org/textcaps/dataset/) and [VizWiz-Captions](https://vizwiz.org/tasks-and-datasets/image-captioning/).
  
  
-## Dataset Introduction
+### Dataset introduction
 The text-aware captions, questions and basic information of images are all stored in .npy files. 
 Each sample in .npy file represent a tuple `<image, text-aware caption, automatic initial caption, pseudo initial caption, questions>`.
 The file can be read
@@ -61,18 +61,15 @@ for sample in data:
  
  
 
+## Experimets
 
- ## download checkpoints 
-Checkpoints of M4CC, GQAM w/o GE, GQAM can be download from baidu disk (https://pan.baidu.com/s/1g8GzWAu0gVRlxGiphgDmsg, pwd:w4a6).
-  
- 
- ## train from scratch
+ ### train
  To train GQAM from scratch (e.g. GQAM with rand training strategy on ControlTextCaps), run the shell script as follows:
  ```
 CUDA_VISIBLE_DEVICES=0 sh run_train_controltextcaps.sh
 ```
  
- ## test 
+ ### test 
  To test a model (e.g. GQAM trained with rand strategy on ControlTextCaps), run the shell script to get captions as follows:
  
   ```
@@ -80,6 +77,10 @@ CUDA_VISIBLE_DEVICES=0 sh run_test_controltextcaps.sh
 ```
 Copy the path of prediction file to `eval_QcTextCap.sh`, run this shell script to calculate captioning metrics.
 
+ ### trained checkpoints 
+Checkpoints of M4CC, GQAM w/o GE, GQAM can be download from baidu disk (https://pan.baidu.com/s/1g8GzWAu0gVRlxGiphgDmsg, pwd:w4a6).
+ 
+ 
  
  #Citation
 
