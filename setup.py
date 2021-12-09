@@ -18,7 +18,7 @@ with open("README.md", encoding="utf8") as f:
 with open("LICENSE") as f:
     license = f.read()
 
-with open("requirements_raw.txt") as f:
+with open("requirements.txt") as f:
     reqs = f.read()
 
 DISTNAME = "pythia"
