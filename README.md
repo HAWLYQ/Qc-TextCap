@@ -6,10 +6,34 @@ Task preview:
 
 ![Qc-TextCap](https://github.com/HAWLYQ/Qc-TextCap/blob/master/task_preview.pdf)
 
+ 
+ # Getting started
+ This project is revised based on [M4C-Captioner](https://github.com/facebookresearch/mmf/tree/project/m4c/projects/M4C_Captioner).
+ You can create your own conda environment and then get started as follows:
+ ```
+git clone https://github.com/HAWLYQ/Qc-TextCap.git
+cd Qc-TextCap
+python setup.py develop
+```
+ If there is a error `error: Setup script exited with error in demjson setup command: use_2to3 is invalid.`, try:
+ ```
+pip install --upgrade setuptools==57.5.0
+```
+When you get the message 'Finished processing dependencies for pythia==0.3', 
+the environment is ready. 
+
+### download detectron weights
+```
+mkdir data
+cd data
+wget http://dl.fbaipublicfiles.com/pythia/data/detectron_weights.tar.gz
+tar xf detectron_weights.tar.gz
+```
+
 # Dataset
 ## Get Qc-TextCap Datasets
 Download ControlTextCaps and ControlVizWiz from baidu disk (https://pan.baidu.com/s/1gw5l6eFFGO2OFfWt9ZtFAg, pwd：ykyi).
-Put corresponding imdb directories under `data/$dataset_name`.
+Put corresponding imdb directories and vocabulary files under `data/$dataset_name`. 
 Raw images can be downloaded from official sites of [TextCaps](https://textvqa.org/textcaps/dataset/) and [VizWiz-Captions](https://vizwiz.org/tasks-and-datasets/image-captioning/).
  
  
@@ -34,25 +58,9 @@ for sample in data:
  under  `data/$dataset_name/bua_feats/obj` and `data/$dataset_name/bua_feats/ocr`.
  
  
- # Experiments
- 
- ## environment
- This project is revised based on [M4C-Captioner](https://github.com/facebookresearch/mmf/tree/project/m4c/projects/M4C_Captioner).
- You can create your own conda environment and then get started as follows:
- ```
-git clone https://github.com/HAWLYQ/Qc-TextCap.git
-cd Qc-TextCap
-python setup.py develop
-```
- If there is a error `error: Setup script exited with error in demjson setup command: use_2to3 is invalid.`, try:
- ```
-pip install --upgrade setuptools==57.5.0
-```
-When you get the message 'Finished processing dependencies for pythia==0.3', 
-the environment is ready. 
 
 
- ## checkpoints download
+ ## download checkpoints 
 Checkpoints of M4CC, GQAM w/o GE, GQAM can be download from baidu disk (https://pan.baidu.com/s/1g8GzWAu0gVRlxGiphgDmsg, pwd:w4a6).
   
  
