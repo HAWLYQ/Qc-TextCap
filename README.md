@@ -61,7 +61,7 @@ for sample in data:
  
  
 
-## Experimets
+## Experiments
 
  ### train
  To train GQAM from scratch (e.g. GQAM with rand training strategy on ControlTextCaps), run the shell script as follows:
