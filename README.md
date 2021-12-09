@@ -82,7 +82,7 @@ Our checkpoints (M4CC, GQAM w/o GE, GQAM) trained on ControlTextCaps and Control
  
  
  
- #Citation
+ ## Citation
 
 If you find this code useful for your research, please consider citing:
 ```bibtex
