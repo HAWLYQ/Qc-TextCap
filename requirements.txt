@@ -13,3 +13,4 @@ fastText==0.9.1
 nltk==3.4.1
 pytorch-transformers==1.2.0
 editdistance==0.5.3
+botocore==1.15.45
