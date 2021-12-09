@@ -37,8 +37,21 @@ for sample in data:
  # Experiments
  
  ## environment
- This project is revised based on [M4C-Captioner](https://github.com/facebookresearch/mmf/tree/project/m4c/projects/M4C_Captioner), so please prepare environments as [pythia](https://github.com/facebookresearch/mmf/tree/project/m4c).
- 
+ This project is revised based on [M4C-Captioner](https://github.com/facebookresearch/mmf/tree/project/m4c/projects/M4C_Captioner).
+ You can create your own conda environment and then get started as follows:
+ ```
+git clone https://github.com/HAWLYQ/Qc-TextCap.git
+cd Qc-TextCap
+python setup.py develop
+```
+ If there is a error `error: Setup script exited with error in demjson setup command: use_2to3 is invalid.`, try:
+ ```
+pip install --upgrade setuptools==57.5.0
+```
+When you get the message 'Finished processing dependencies for pythia==0.3', 
+the environment is ready. 
+
+
  ## checkpoints download
 Checkpoints of M4CC, GQAM w/o GE, GQAM can be download from baidu disk (https://pan.baidu.com/s/1g8GzWAu0gVRlxGiphgDmsg, pwd:w4a6).
   
