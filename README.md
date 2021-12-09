@@ -78,7 +78,7 @@ CUDA_VISIBLE_DEVICES=0 sh run_test_controltextcaps.sh
 Copy the path of prediction file to `eval_QcTextCap.sh`, run this shell script to calculate captioning metrics.
 
  ### trained checkpoints 
-Checkpoints of M4CC, GQAM w/o GE, GQAM can be download from baidu disk (https://pan.baidu.com/s/1g8GzWAu0gVRlxGiphgDmsg, pwd:w4a6).
+Our checkpoints (M4CC, GQAM w/o GE, GQAM) trained on ControlTextCaps and ControlVizWiz can be download from baidu disk (https://pan.baidu.com/s/1g8GzWAu0gVRlxGiphgDmsg, pwd:w4a6).
  
  
  
