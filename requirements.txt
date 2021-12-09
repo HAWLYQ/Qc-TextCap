@@ -1,5 +1,5 @@
 torch==1.2
-torchvision>0.2
+torchvision=0.2
 tensorboardX>=1.2
 numpy==1.18
 tqdm>=4.19
