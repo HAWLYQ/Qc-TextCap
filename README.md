@@ -11,6 +11,8 @@ Task preview:
  This project is revised based on [M4C-Captioner](https://github.com/facebookresearch/mmf/tree/project/m4c/projects/M4C_Captioner).
  You can create your own conda environment and then get started as follows:
  ```
+conda create --prefix=$virtual_env_path python=3.6 
+source activate $virtual_env_path
 git clone https://github.com/HAWLYQ/Qc-TextCap.git
 cd Qc-TextCap
 python setup.py develop
