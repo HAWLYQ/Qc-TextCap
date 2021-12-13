@@ -61,6 +61,7 @@ for sample in data:
  The feature file in obj or ocr directory for each image should be named as `$image_id+ .npy` and should be read as follows:
  ```
 import numpy as np
+import torch
 feat_path =  ...
 bua_feat = torch.from_numpy(np.load(feat_path))
 print(bua_feat)
