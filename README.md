@@ -58,9 +58,16 @@ for sample in data:
  Besides, each `sample` also stores the object and ocr bounding boxes in `obj_normalized_boxes` and `ocr_normalized_boxes`.
  Extract object-level features of these bounding boxes by [bottom-up-attention](https://github.com/MILVLG/bottom-up-attention.pytorch) (for the config file, we choose `configs/bua-caffe/extract-bua-caffe-r152.yaml`) and put these features
  under  `data/$dataset_name/bua_feats/obj` and `data/$dataset_name/bua_feats/ocr`.
+ The feature file in obj or ocr directory for each image should be named as `$image_id+ .npy` and should be read as follows:
+ ```
+import numpy as np
+feat_path =  ...
+bua_feat = torch.from_numpy(np.load(feat_path))
+print(bua_feat)
+```
+The output should be a vector whose size is  N x 2048, where N is the number of bounding boxes. 
  
  
-
 ## Experiments
 
  ### train
