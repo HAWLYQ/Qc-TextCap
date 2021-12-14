@@ -23,7 +23,7 @@ pip install --upgrade setuptools==57.5.0
 ```
 When you get the message 'Finished processing dependencies for pythia==0.3', 
 the environment is ready. 
-Then install pycocoevalcap for caption evaluation as follows
+Then install pycocoevalcap for caption evaluation as follows:
 ```
 pip install git+https://github.com/ronghanghu/coco-caption.git@python23
 ```
