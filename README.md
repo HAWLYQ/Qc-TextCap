@@ -93,6 +93,7 @@ CUDA_VISIBLE_DEVICES=0 sh run_train_controltextcaps.sh
 CUDA_VISIBLE_DEVICES=0 sh run_test_controltextcaps.sh
 ```
 Copy the path of prediction file to `eval_QcTextCap.sh`, run this shell script to calculate captioning metrics.
+
 Attention: During test, make sure `use_model_and_auto_simpel_cap` is set False and `use_model_simple_cap` is set True in the 
 corresponding config file.
 
