@@ -64,7 +64,10 @@ for sample in data:
  Each `sample` also stores the image height, width, object bounding boxes and ocr bounding boxes in `image_height`, `image_width`, `obj_normalized_boxes` and `ocr_normalized_boxes`.
  Extract object-level features of these bounding boxes by [bottom-up-attention](https://github.com/MILVLG/bottom-up-attention.pytorch) (for the config file, we choose `configs/bua-caffe/extract-bua-caffe-r152.yaml`) and put these features
  under  `data/$dataset_name/bua_feats/obj` and `data/$dataset_name/bua_feats/ocr`.
- The feature file in obj or ocr directory for each image should be named as `$image_id+ .npy` and should be read as follows:
+ 
+ For ControlTextCaps, the feature file in obj or ocr directory for each image should be named as `$image_id+ .npy`.
+ For ControlVizWiz, the feature file in obj or ocr directory for each image should be named as `$image_name+ .npy`.
+ These feature files should be read as follows:
  ```
 import numpy as np
 import torch
@@ -90,6 +93,9 @@ CUDA_VISIBLE_DEVICES=0 sh run_train_controltextcaps.sh
 CUDA_VISIBLE_DEVICES=0 sh run_test_controltextcaps.sh
 ```
 Copy the path of prediction file to `eval_QcTextCap.sh`, run this shell script to calculate captioning metrics.
+Attention: During test, make sure `use_model_and_auto_simpel_cap` is set False and `use_model_simple_cap` is set True in the 
+corresponding config file.
+
 
  ### trained checkpoints 
 Our checkpoints (M4CC, GQAM w/o GE, GQAM) trained on ControlTextCaps and ControlVizWiz can be download from baidu disk (https://pan.baidu.com/s/1g8GzWAu0gVRlxGiphgDmsg, pwd:w4a6).
